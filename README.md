@@ -58,11 +58,14 @@ This project transforms multi-table relational banking data into **actionable bu
 ---
 
 ## 📁 Project Structure
-enterprice-banking-analytics-project/
+enterprise-banking-analytics-project/
 │
 ├── 00_Data/
-│   ├── raw/                          # Original raw CSVs
-│   └── cleaned/                      # Cleaned datasets ready for DB
+│   ├── raw/
+│   │   └── Original raw CSV files
+│   │
+│   └── cleaned/
+│       └── Cleaned datasets ready for database loading
 │
 ├── 01_Business_Understanding/
 │   └── Business_Understanding.md
@@ -95,9 +98,14 @@ enterprice-banking-analytics-project/
 ├── 07_PowerBI/
 │   └── dashboard.pbix
 │
-└── 08_screenshots/
-├── dashboard_images/             # Power BI dashboard screenshots
-└── chart_images/                 # Additional charts
+├── 08_screenshots/
+│   ├── dashboard_images/
+│   │   └── Power BI dashboard screenshots
+│   │
+│   └── chart_images/
+│       └── Additional analytical charts
+│
+└── README.md
 
 ---
 
@@ -175,42 +183,65 @@ Interactive multi-page dashboard with:
 ## ▶️ How to Run / Explore
 
 ### 1. Database Setup
+
+Run `schema_design.sql` in **MySQL Workbench**.
+
 ```sql
--- Run schema_design.sql in MySQL Workbench
--- Then load cleaned CSVs into the respective tables
+-- Create the database and tables
+-- Then load the cleaned CSV files into the respective tables
 
-2. SQL Analysis
-Open any file in 05_SQL_Business_Analysis/ and execute in MySQL.
+2. SQL Business Analysis
+
+Open any SQL file from:
+05_SQL_Business_Analysis/
+Execute the queries in MySQL Workbench after loading the database.
+
+The folder contains analysis for:
+
+Executive KPIs
+Customer Analytics
+Account Analytics
+Transaction Analytics
+Loan Analytics
+Branch Analytics
+Cross-Functional Analytics
+
 3. Python Notebooks
-Bashpip install pandas numpy matplotlib seaborn
+
+Install the required Python libraries:
+pip install pandas numpy matplotlib seaborn
+Launch Jupyter Notebook:
 jupyter notebook
-Open 06_Notebook/EDA.ipynb or sql_analysis_outputs.ipynb
-4. Power BI
+Then open either:
+06_Notebook/EDA.ipynb
+Or
+06_Notebook/sql_analysis_outputs.ipynb
 
-Open 07_PowerBI/dashboard.pbix in Power BI Desktop
-Or view the screenshots in 08_screenshots/dashboard_images/
+4. Power BI Dashboard
 
+Open the Power BI file in Power BI Desktop:
+07_PowerBI/dashboard.pbix
+You can also explore the dashboard screenshots without opening Power BI:
+08_screenshots/dashboard_images/
 
 🎯 Skills Demonstrated
-
 End-to-end analytics project ownership
 Relational database design & MySQL
-Advanced SQL (CTEs, multi-table joins, aggregations)
+Advanced SQL analysis
+CTEs and multi-table joins
+Aggregations and window functions
 Data cleaning & preprocessing with Python
-Exploratory Data Analysis
+Exploratory Data Analysis (EDA)
 Business-oriented insight generation
-Interactive dashboard design in Power BI
-Structured documentation & project organization
-
+Interactive dashboard development in Power BI
+DAX-based analytical reporting
+Data visualization and storytelling
+Structured documentation and project organization
 
 👤 Author
+
 codebyavneesh
 
-GitHub: github.com/codebyavneesh
-LinkedIn: linkedin.com/in/codebyavneesh
-Fiverr: fiverr.com/codebyavneesh
-
-
-⭐ If you found this project useful, please give it a star!
-Feel free to fork, explore, or use it as a reference for your own banking/finance analytics projects.
-text
+🔗 Connect With Me
+💼 LinkedIn: linkedin.com/in/codebyavneesh
+🧑‍💻 Fiverr: fiverr.com/sellers/codebyavneesh
