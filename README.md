@@ -1,68 +1,210 @@
 # 🏦 Enterprise Banking Analytics Project
 
-**End-to-End Banking Analytics System** — Raw banking data se clean database, advanced SQL analytics, Python EDA aur interactive Power BI dashboard tak ka complete analytics lifecycle.
+### End-to-End Data Analytics Project using MySQL, Python & Power BI
 
-**Tools:** Python • MySQL • Power BI • SQL • Pandas • Matplotlib • Seaborn
+An end-to-end **Enterprise Banking Analytics** project designed to transform raw banking data into actionable business insights using **data cleaning, relational database design, advanced SQL analysis, Python EDA, and interactive Power BI dashboards**.
 
----
+The project analyzes the banking ecosystem across **11 relational tables** covering customers, customer types, accounts, account types, account statuses, loans, loan statuses, transactions, transaction types, branches, and addresses.
 
-## 🚀 Power BI Dashboard Preview
+The complete project follows a structured analytics lifecycle:
 
-> Click on any image to open the full-size screenshot
-
-[![Dashboard 1](enterprice-banking-analytics-project/08_screenshots/dashboard_images/dashboard_image1.png)](enterprice-banking-analytics-project/08_screenshots/dashboard_images/dashboard_image1.png)
-
-[![Dashboard 2](enterprice-banking-analytics-project/08_screenshots/dashboard_images/dashboard_image2.png)](enterprice-banking-analytics-project/08_screenshots/dashboard_images/dashboard_image2.png)
-
-[![Dashboard 3](enterprice-banking-analytics-project/08_screenshots/dashboard_images/dashboard_image3.png)](enterprice-banking-analytics-project/08_screenshots/dashboard_images/dashboard_image3.png)
-
-[![Dashboard 4](enterprice-banking-analytics-project/08_screenshots/dashboard_images/dashboard_image4.png)](enterprice-banking-analytics-project/08_screenshots/dashboard_images/dashboard_image4.png)
-
-[![Dashboard 5](enterprice-banking-analytics-project/08_screenshots/dashboard_images/dashboard_image5.png)](enterprice-banking-analytics-project/08_screenshots/dashboard_images/dashboard_image5.png)
+> **Business Understanding → Data Understanding → Data Cleaning → Database Design → SQL Business Analysis → Python EDA → Power BI → Business Insights**
 
 ---
 
-## 📌 Project Overview
+# 📌 Project Overview
 
-Banks generate massive volumes of data daily through customer onboarding, account management, transactions, loans, and branch operations. Raw operational data alone is not enough for strategic decisions.
+Banks generate data across multiple operational areas such as customers, accounts, loans, transactions, and branches.
 
-This project transforms multi-table relational banking data into **actionable business insights** using a complete analytics pipeline:
+The challenge is not simply storing this data, but connecting these entities and converting them into insights that can support business decisions.
 
-- Business Understanding  
-- Data Understanding & ER Modeling  
-- Data Cleaning (Python)  
-- Relational Database Design (MySQL)  
-- Advanced SQL Business Analysis  
-- Exploratory Data Analysis (Python)  
-- Interactive Power BI Dashboard  
+This project builds a complete analytical solution that answers questions such as:
 
-**Key Focus Areas:**
-- Customer Analytics  
-- Account Performance  
-- Transaction Trends  
-- Loan Portfolio Health  
-- Branch Performance  
+* Who are the bank's customers?
+* What types of customers does the bank serve?
+* Which account types contribute the most balance?
+* What is the bank's total transaction activity?
+* Which branches handle the highest transaction volume?
+* What does the loan portfolio look like?
+* Which accounts have loan relationships?
+* How are customers, accounts, loans, transactions, and branches interconnected?
+* Which business areas are performing strongly and where are opportunities for improvement?
 
----
-
-## 🛠️ Tech Stack
-
-| Category              | Tools / Technologies                          |
-|-----------------------|-----------------------------------------------|
-| **Data Cleaning & EDA** | Python, Pandas, NumPy, Matplotlib, Seaborn   |
-| **Database**          | MySQL                                         |
-| **SQL Analytics**     | Advanced SQL (CTEs, Window Functions, Joins)  |
-| **Visualization**     | Power BI                                      |
-| **Version Control**   | Git & GitHub                                  |
+The project is designed as a **portfolio-grade data analytics case study**, not simply as a dashboard exercise.
 
 ---
 
-## 📁 Project Structure
-enterprice-banking-analytics-project/
+# 🎯 Business Objectives
+
+The analysis is organized around five major business domains.
+
+### 👥 Customer Analytics
+
+Understand the customer base, customer types, geographic distribution, and customer-level banking relationships.
+
+### 💳 Account Analytics
+
+Analyze account types, account statuses, balances, account opening trends, and customer-account relationships.
+
+### 🔄 Transaction Analytics
+
+Measure transaction volume, transaction value, transaction types, transaction trends, and account-to-account movement.
+
+### 💰 Loan Analytics
+
+Evaluate the loan portfolio, principal amounts, interest rates, loan statuses, loan duration, and account-level loan relationships.
+
+### 🏢 Branch Analytics
+
+Compare branches using customer activity, transaction activity, loan exposure, and other operational KPIs.
+
+---
+
+# 🧩 Database Overview
+
+The project uses a relational MySQL database:
+
+```sql
+enterpriceBankingAnalyticsDB
+```
+
+> Note: The database name in the original SQL schema uses `enterpriceBankingAnalyticsDB`. The README uses the project branding **Enterprise Banking Analytics**.
+
+The database contains **11 tables**.
+
+| #  | Table               | Role                                |
+| -- | ------------------- | ----------------------------------- |
+| 1  | `addresses`         | Stores address information          |
+| 2  | `customer_types`    | Stores customer classifications     |
+| 3  | `customers`         | Stores customer master data         |
+| 4  | `account_types`     | Stores account classifications      |
+| 5  | `account_statuses`  | Stores account status values        |
+| 6  | `accounts`          | Stores customer account information |
+| 7  | `loan_statuses`     | Stores loan status values           |
+| 8  | `loans`             | Stores loan information             |
+| 9  | `transaction_types` | Stores transaction classifications  |
+| 10 | `branches`          | Stores branch information           |
+| 11 | `transactions`      | Stores account transaction activity |
+
+---
+
+# 🔗 Data Model & Relationships
+
+The database follows a relational structure with supporting lookup/master tables and core business entities.
+
+```text
+                              ┌───────────────┐
+                              │   addresses   │
+                              └───────┬───────┘
+                                      │
+                         ┌────────────┴────────────┐
+                         │                         │
+                         ▼                         ▼
+                 ┌───────────────┐          ┌───────────────┐
+                 │   customers   │          │    branches   │
+                 └───────┬───────┘          └───────┬───────┘
+                         │                          │
+                         │                          │
+               ┌─────────┴─────────┐                │
+               │                   │                │
+               ▼                   ▼                ▼
+       customer_types          accounts       transactions
+                                   │             │       │
+                    ┌──────────────┼─────────────┘       │
+                    │              │                     │
+                    ▼              ▼                     ▼
+             account_types       loans          transaction_types
+                    │              │
+                    ▼              ▼
+             account_statuses  loan_statuses
+```
+
+### Key Relationships
+
+```text
+customers → addresses
+customers → customer_types
+
+accounts → customers
+accounts → account_types
+accounts → account_statuses
+
+loans → accounts
+loans → loan_statuses
+
+branches → addresses
+
+transactions → accounts (origin)
+transactions → accounts (destination)
+transactions → branches
+transactions → transaction_types
+```
+
+### Important Design Detail
+
+The `transactions` table contains two foreign-key relationships to the `accounts` table:
+
+```text
+AccountOriginID
+AccountDestinationID
+```
+
+This allows the project to model **account-to-account fund movement**, making transaction analysis more realistic than a simple single-account transaction table.
+
+---
+
+# 🏗️ Project Architecture
+
+The complete analytics pipeline is structured into eight phases.
+
+```text
+                    ┌──────────────────────────┐
+                    │ 1. Business Understanding│
+                    └────────────┬─────────────┘
+                                 ↓
+                    ┌──────────────────────────┐
+                    │   2. Data Understanding  │
+                    └────────────┬─────────────┘
+                                 ↓
+                    ┌──────────────────────────┐
+                    │     3. Data Cleaning     │
+                    └────────────┬─────────────┘
+                                 ↓
+                    ┌──────────────────────────┐
+                    │   4. Database Design     │
+                    └────────────┬─────────────┘
+                                 ↓
+                    ┌──────────────────────────┐
+                    │ 5. SQL Business Analysis │
+                    └────────────┬─────────────┘
+                                 ↓
+                    ┌──────────────────────────┐
+                    │       6. Python EDA      │
+                    └────────────┬─────────────┘
+                                 ↓
+                    ┌──────────────────────────┐
+                    │      7. Power BI         │
+                    └────────────┬─────────────┘
+                                 ↓
+                    ┌──────────────────────────┐
+                    │     8. Insights &        │
+                    │       Visualization      │
+                    └──────────────────────────┘
+```
+
+---
+
+# 📂 Repository Structure
+
+```text
+enterprise-banking-analytics-project/
 │
 ├── 00_Data/
-│   ├── raw/                          # Original raw CSVs
-│   └── cleaned/                      # Cleaned datasets ready for DB
+│   ├── raw/
+│   │   └── Original raw CSV files
+│   │
+│   └── cleaned/
+│       └── Cleaned datasets ready for database loading
 │
 ├── 01_Business_Understanding/
 │   └── Business_Understanding.md
@@ -95,321 +237,706 @@ enterprice-banking-analytics-project/
 ├── 07_PowerBI/
 │   └── dashboard.pbix
 │
-└── 08_screenshots/
-├── dashboard_images/             # Power BI dashboard screenshots
-└── chart_images/                 # Additional charts
-
-
----
-
-## 📂 Dataset
-
-Multi-table relational banking dataset covering:
-
-- Customers & Customer Types  
-- Accounts & Account Types / Statuses  
-- Transactions & Transaction Types  
-- Loans & Loan Statuses  
-- Branches  
-- Addresses  
-
-**Cleaned files** are ready for MySQL import and Power BI.
+├── 08_screenshots/
+│   ├── dashboard_images/
+│   └── chart_images/
+│
+└── README.md
+```
 
 ---
 
-## 🔍 Analysis Performed
+# 🧭 Phase 1 — Business Understanding
 
-### 1. Data Cleaning (`data_cleaning.ipynb`)
-- Missing value treatment
-- Duplicate removal
-- Data type correction
-- Consistency checks
-- Export of cleaned CSVs
+The first stage defines the business context and analytical requirements.
 
-### 2. Database Design
-- Full relational schema (`schema_design.sql`)
-- Primary & Foreign keys
-- Proper normalization
-- ER Diagram
+The project focuses on understanding:
 
-### 3. SQL Business Analysis (7 Modules)
+* Customer base
+* Account portfolio
+* Transaction behavior
+* Loan portfolio
+* Branch activity
+* Cross-functional relationships
 
-| Module | Focus |
-|--------|-------|
-| **01_Executive_KPIs** | Total Customers, Accounts, Transactions, Loan Portfolio, Avg Balance |
-| **02_Customer_Analytics** | Customer segments, high-value customers, growth trends |
-| **03_Account_Analytics** | Account type popularity, balance distribution, status analysis |
-| **04_Transaction_Analytics** | Volume trends, transaction types, monthly patterns |
-| **05_Loan_Analytics** | Portfolio health, status distribution, average loan size |
-| **06_Branch_Analytics** | Branch performance ranking, transaction volume |
-| **07_Cross_Functional** | Multi-table insights across customers, accounts & loans |
+Detailed business requirements are documented in:
 
-### 4. Python EDA (`EDA.ipynb`)
-- Deep exploratory analysis
-- Statistical summaries
-- Visualizations for patterns & anomalies
-
-### 5. Power BI Dashboard
-Interactive multi-page dashboard with:
-- Executive KPI cards
-- Customer & Account insights
-- Transaction trends
-- Loan portfolio overview
-- Branch performance comparison
-- Filters & slicers for interactive exploration
+```text
+01_Business_Understanding/
+└── Business_Understanding.md
+```
 
 ---
 
-## 📈 Key Business Questions Answered
+# 🔎 Phase 2 — Data Understanding
 
-- How many active customers & accounts does the bank have?
-- Which customer segments contribute the most?
-- Which account types are most popular?
-- What is the total loan portfolio size & health?
-- Which branches process the highest transaction volume?
-- What are the monthly transaction trends?
-- Which customers hold the highest balances?
-- Where should management focus for operational improvement?
+The datasets are examined before any transformation or database loading.
+
+The analysis includes:
+
+* Dataset structure
+* Column definitions
+* Data types
+* Primary keys
+* Foreign keys
+* Relationships
+* Missing-value assessment
+* Duplicate assessment
+* Data consistency checks
+
+Documentation:
+
+```text
+02_Data_Understanding/
+├── Data_Understanding.md
+└── ER_Diagram.png
+```
+
+### ER Diagram
+
+![Entity Relationship Diagram](02_Data_Understanding/ER_Diagram.png)
 
 ---
 
-## ▶️ How to Run / Explore
+# 🧹 Phase 3 — Data Cleaning
 
-### 1. Database Setup
+Raw data is cleaned and prepared before being loaded into MySQL.
+
+### Data Cleaning Activities
+
+* Missing-value analysis
+* Duplicate detection
+* Data-type validation
+* Date standardization
+* Numerical-field validation
+* Column consistency checks
+* Referential integrity preparation
+* Dataset standardization
+
+### Deliverables
+
+```text
+03_Data_Cleaning/
+├── data_cleaning.ipynb
+└── Data_Cleaning_Report.md
+```
+
+The original raw files remain preserved in:
+
+```text
+00_Data/raw/
+```
+
+while the processed datasets are stored in:
+
+```text
+00_Data/cleaned/
+```
+
+---
+
+# 🗄️ Phase 4 — Database Design
+
+A relational MySQL database was created to organize the cleaned banking datasets.
+
+### Database
+
 ```sql
--- Run schema_design.sql in MySQL Workbench
--- Then load cleaned CSVs into the respective tables
+CREATE DATABASE enterpriceBankingAnalyticsDB;
+```
 
-2. SQL Analysis
-Open any file in 05_SQL_Business_Analysis/ and execute in MySQL.
+The schema uses:
 
-3. Python Notebooks
-Bashpip install pandas numpy matplotlib seaborn
+* Primary Keys
+* Foreign Keys
+* Referential Integrity
+* Relational Mapping
+* Supporting lookup tables
+* Transaction relationships
+* Customer-account relationships
+* Account-loan relationships
+* Branch-address relationships
 
-Open 06_Notebook/EDA.ipynb or sql_analysis_outputs.ipynb
-4. Power BI
+### Database Deliverables
 
-Open 07_PowerBI/dashboard.pbix in Power BI Desktop
-Or view the screenshots in 08_screenshots/dashboard_images/
+```text
+04_Database_Design/
+├── schema_design.sql
+└── ER_Diagram.png
+```
 
+### Database ER Diagram
 
-https://github.com/codebyavneesh/enterprice-banking-analytics-project
-ye rhi meri repo aur esme readme file nhi hai aur mera ye project mere resume aur portfolio ke liye hai to eske liye tagadi readme banao aur hn readme me author name: codebyavneesh aur linked in link: https://linkedin.com/in/codebyavneesh add kr dena aur hn readme me mere dashboard images ko bhi add kr dena jo screenshots ke dashboard folder me hai aur un images par click krne par actual images open ho
-
-
-Worked for 1m 14s
-Yeh raha tagadi, portfolio-ready README — copy-paste karke root me README.md bana lo.
-
-# 🏦 Enterprise Banking Analytics Project
-
-**End-to-End Banking Analytics System** — Raw banking data se clean database, advanced SQL analytics, Python EDA aur interactive Power BI dashboard tak ka complete analytics lifecycle.
-
-**Tools:** Python • MySQL • Power BI • SQL • Pandas • Matplotlib • Seaborn
+![Database ER Diagram](04_Database_Design/ER_Diagram.png)
 
 ---
 
-## 🚀 Power BI Dashboard Preview
+# 📊 Phase 5 — SQL Business Analysis
 
-> Click on any image to open the full-size screenshot
+SQL is the core analytical layer of the project.
 
-[![Dashboard 1](enterprice-banking-analytics-project/08_screenshots/dashboard_images/dashboard_image1.png)](enterprice-banking-analytics-project/08_screenshots/dashboard_images/dashboard_image1.png)
-
-[![Dashboard 2](enterprice-banking-analytics-project/08_screenshots/dashboard_images/dashboard_image2.png)](enterprice-banking-analytics-project/08_screenshots/dashboard_images/dashboard_image2.png)
-
-[![Dashboard 3](enterprice-banking-analytics-project/08_screenshots/dashboard_images/dashboard_image3.png)](enterprice-banking-analytics-project/08_screenshots/dashboard_images/dashboard_image3.png)
-
-[![Dashboard 4](enterprice-banking-analytics-project/08_screenshots/dashboard_images/dashboard_image4.png)](enterprice-banking-analytics-project/08_screenshots/dashboard_images/dashboard_image4.png)
-
-[![Dashboard 5](enterprice-banking-analytics-project/08_screenshots/dashboard_images/dashboard_image5.png)](enterprice-banking-analytics-project/08_screenshots/dashboard_images/dashboard_image5.png)
+Instead of writing disconnected queries, the analysis is organized into **seven business-focused modules**.
 
 ---
 
-## 📌 Project Overview
+## 01 — Executive KPIs
 
-Banks generate massive volumes of data daily through customer onboarding, account management, transactions, loans, and branch operations. Raw operational data alone is not enough for strategic decisions.
+High-level metrics designed to give an overall view of the bank.
 
-This project transforms multi-table relational banking data into **actionable business insights** using a complete analytics pipeline:
+Typical analysis includes:
 
-- Business Understanding  
-- Data Understanding & ER Modeling  
-- Data Cleaning (Python)  
-- Relational Database Design (MySQL)  
-- Advanced SQL Business Analysis  
-- Exploratory Data Analysis (Python)  
-- Interactive Power BI Dashboard  
-
-**Key Focus Areas:**
-- Customer Analytics  
-- Account Performance  
-- Transaction Trends  
-- Loan Portfolio Health  
-- Branch Performance  
+* Total customers
+* Total accounts
+* Total account balance
+* Total transactions
+* Total transaction amount
+* Total loans
+* Total loan principal
 
 ---
 
-## 🛠️ Tech Stack
+## 02 — Customer Analytics
 
-| Category              | Tools / Technologies                          |
-|-----------------------|-----------------------------------------------|
-| **Data Cleaning & EDA** | Python, Pandas, NumPy, Matplotlib, Seaborn   |
-| **Database**          | MySQL                                         |
-| **SQL Analytics**     | Advanced SQL (CTEs, Window Functions, Joins)  |
-| **Visualization**     | Power BI                                      |
-| **Version Control**   | Git & GitHub                                  |
+Customer-focused analysis includes:
 
----
-
-## 📁 Project Structure
-enterprice-banking-analytics-project/
-│
-├── 00_Data/
-│   ├── raw/                          # Original raw CSVs
-│   └── cleaned/                      # Cleaned datasets ready for DB
-│
-├── 01_Business_Understanding/
-│   └── Business_Understanding.md
-│
-├── 02_Data_Understanding/
-│   ├── Data_Understanding.md
-│   └── ER_Diagram.png
-│
-├── 03_Data_Cleaning/
-│   ├── data_cleaning.ipynb
-│   └── Data_Cleaning_Report.md
-│
-├── 04_Database_Design/
-│   ├── schema_design.sql
-│   └── ER_Diagram.png
-│
-├── 05_SQL_Business_Analysis/
-│   ├── 01_Executive_KPIs.sql
-│   ├── 02_Customer_Analytics.sql
-│   ├── 03_Account_Analytics.sql
-│   ├── 04_Transaction_Analytics.sql
-│   ├── 05_Loan_Analytics.sql
-│   ├── 06_Branch_Analytics.sql
-│   └── 07_Cross_Functional_Analytics.sql
-│
-├── 06_Notebook/
-│   ├── EDA.ipynb
-│   └── sql_analysis_outputs.ipynb
-│
-├── 07_PowerBI/
-│   └── dashboard.pbix
-│
-└── 08_screenshots/
-├── dashboard_images/             # Power BI dashboard screenshots
-└── chart_images/                 # Additional charts
+* Customer count
+* Customer type distribution
+* Customer demographics
+* Customer-address analysis
+* Customer account relationships
+* Customer balance contribution
+* High-value customer analysis
+* Customer-level activity
 
 ---
 
-## 📂 Dataset
+## 03 — Account Analytics
 
-Multi-table relational banking dataset covering:
+Account-focused analysis includes:
 
-- Customers & Customer Types  
-- Accounts & Account Types / Statuses  
-- Transactions & Transaction Types  
-- Loans & Loan Statuses  
-- Branches  
-- Addresses  
-
-**Cleaned files** are ready for MySQL import and Power BI.
-
----
-
-## 🔍 Analysis Performed
-
-### 1. Data Cleaning (`data_cleaning.ipynb`)
-- Missing value treatment
-- Duplicate removal
-- Data type correction
-- Consistency checks
-- Export of cleaned CSVs
-
-### 2. Database Design
-- Full relational schema (`schema_design.sql`)
-- Primary & Foreign keys
-- Proper normalization
-- ER Diagram
-
-### 3. SQL Business Analysis (7 Modules)
-
-| Module | Focus |
-|--------|-------|
-| **01_Executive_KPIs** | Total Customers, Accounts, Transactions, Loan Portfolio, Avg Balance |
-| **02_Customer_Analytics** | Customer segments, high-value customers, growth trends |
-| **03_Account_Analytics** | Account type popularity, balance distribution, status analysis |
-| **04_Transaction_Analytics** | Volume trends, transaction types, monthly patterns |
-| **05_Loan_Analytics** | Portfolio health, status distribution, average loan size |
-| **06_Branch_Analytics** | Branch performance ranking, transaction volume |
-| **07_Cross_Functional** | Multi-table insights across customers, accounts & loans |
-
-### 4. Python EDA (`EDA.ipynb`)
-- Deep exploratory analysis
-- Statistical summaries
-- Visualizations for patterns & anomalies
-
-### 5. Power BI Dashboard
-Interactive multi-page dashboard with:
-- Executive KPI cards
-- Customer & Account insights
-- Transaction trends
-- Loan portfolio overview
-- Branch performance comparison
-- Filters & slicers for interactive exploration
+* Total accounts
+* Account-type distribution
+* Account-status distribution
+* Average account balance
+* Total account balance
+* Account opening trends
+* Customer-level account analysis
 
 ---
 
-## 📈 Key Business Questions Answered
+## 04 — Transaction Analytics
 
-- How many active customers & accounts does the bank have?
-- Which customer segments contribute the most?
-- Which account types are most popular?
-- What is the total loan portfolio size & health?
-- Which branches process the highest transaction volume?
-- What are the monthly transaction trends?
-- Which customers hold the highest balances?
-- Where should management focus for operational improvement?
+Transaction analysis includes:
+
+* Transaction count
+* Transaction amount
+* Transaction type distribution
+* Monthly transaction trends
+* High-value transactions
+* Origin-account analysis
+* Destination-account analysis
+* Branch-wise transaction activity
 
 ---
 
-## ▶️ How to Run / Explore
+## 05 — Loan Analytics
 
-### 1. Database Setup
+Loan analysis includes:
+
+* Total loan count
+* Total loan portfolio
+* Average principal amount
+* Loan status distribution
+* Interest-rate analysis
+* Loan duration analysis
+* Account-level loan relationships
+* Loan portfolio trends
+
+---
+
+## 06 — Branch Analytics
+
+Branch-level analysis includes:
+
+* Branch customer activity
+* Branch transaction volume
+* Branch transaction value
+* Branch-level loan exposure
+* Branch comparison
+* Branch ranking
+* Best vs. worst branch performance
+
+---
+
+## 07 — Cross-Functional Analytics
+
+This section combines multiple entities to answer more advanced business questions.
+
+Examples:
+
+```text
+Customer + Account
+Customer + Loan
+Customer + Transaction
+Account + Loan
+Account + Transaction
+Branch + Transaction
+Branch + Loan
+Customer + Account + Transaction
+```
+
+This is where the relational database becomes especially valuable, because meaningful insights can be derived by connecting multiple business areas.
+
+---
+
+# 🧠 SQL Techniques Used
+
+The project demonstrates practical and advanced SQL concepts.
+
+### Relational Analysis
+
 ```sql
--- Run schema_design.sql in MySQL Workbench
--- Then load cleaned CSVs into the respective tables
-2. SQL Analysis
-Open any file in 05_SQL_Business_Analysis/ and execute in MySQL.
+INNER JOIN
+LEFT JOIN
+SELF JOIN
+```
 
-3. Python Notebooks
-pip install pandas numpy matplotlib seaborn
-jupyter notebook
-Open 06_Notebook/EDA.ipynb or sql_analysis_outputs.ipynb
+### Aggregation
 
-4. Power BI
-Open 07_PowerBI/dashboard.pbix in Power BI Desktop
-Or view the screenshots in 08_screenshots/dashboard_images/
-🎯 Skills Demonstrated
-End-to-end analytics project ownership
-Relational database design & MySQL
-Advanced SQL (CTEs, multi-table joins, aggregations)
-Data cleaning & preprocessing with Python
+```sql
+SUM()
+COUNT()
+AVG()
+MIN()
+MAX()
+```
+
+### Filtering
+
+```sql
+WHERE
+HAVING
+```
+
+### Advanced Querying
+
+```text
+Subqueries
+Correlated Subqueries
+CTEs
+CASE WHEN
+Conditional Aggregation
+```
+
+### Window Functions
+
+```sql
+ROW_NUMBER()
+RANK()
+DENSE_RANK()
+LAG()
+LEAD()
+SUM() OVER(...)
+```
+
+### Analytical Patterns
+
+```text
+Ranking
+Running Totals
+Period Comparisons
+Trend Analysis
+Top-N Analysis
+Contribution Analysis
+Cross-functional Analysis
+```
+
+---
+
+# 🐍 Phase 6 — Python EDA
+
+Python is used to perform exploratory analysis and validate analytical findings.
+
+### Libraries
+
+```text
+Pandas
+NumPy
+Matplotlib
+```
+
+### Main EDA Areas
+
+* Customer distributions
+* Account balances
+* Account type analysis
+* Transaction trends
+* Transaction value analysis
+* Loan portfolio exploration
+* Branch performance
+* Time-based trends
+* Data distributions
+* Outlier identification
+
+### Notebooks
+
+```text
+06_Notebook/
+├── EDA.ipynb
+└── sql_analysis_outputs.ipynb
+```
+
+### `EDA.ipynb`
+
+Used for exploratory analysis, distributions, trends, comparisons, and visual exploration of the banking datasets.
+
+### `sql_analysis_outputs.ipynb`
+
+Used to work with analytical results generated through SQL and visualize important findings.
+
+---
+
+# 📊 Phase 7 — Power BI Dashboard
+
+The final business intelligence layer is developed in **Microsoft Power BI**.
+
+```text
+07_PowerBI/
+└── dashboard.pbix
+```
+
+The dashboard translates the detailed SQL and Python analysis into an interactive business reporting experience.
+
+---
+
+# 📸 Dashboard Preview
+
+> **Replace the filenames below with the exact screenshot filenames stored inside `08_screenshots/dashboard_images/`.**
+
+## 🏦 Executive Overview
+
+![Executive Overview](08_screenshots/dashboard_images/executive_overview.png)
+
+A management-level view of the banking ecosystem using high-level KPIs and performance indicators.
+
+---
+
+## 👥 Customer Analytics
+
+![Customer Analytics](08_screenshots/dashboard_images/customer_analytics.png)
+
+Provides visibility into customer types, customer distribution, account relationships, and customer-level value.
+
+---
+
+## 💳 Account Analytics
+
+![Account Analytics](08_screenshots/dashboard_images/account_analytics.png)
+
+Focuses on account types, account statuses, balances, and account-level trends.
+
+---
+
+## 🔄 Transaction Analytics
+
+![Transaction Analytics](08_screenshots/dashboard_images/transaction_analytics.png)
+
+Analyzes transaction volume, transaction value, transaction types, time trends, and branch-level activity.
+
+---
+
+## 💰 Loan Analytics
+
+![Loan Analytics](08_screenshots/dashboard_images/loan_analytics.png)
+
+Provides insights into loan portfolio size, loan status, principal amounts, interest rates, and loan relationships.
+
+---
+
+## 🏢 Branch Performance
+
+![Branch Performance](08_screenshots/dashboard_images/branch_performance.png)
+
+Compares branches using customer activity, transaction performance, loan exposure, and overall business metrics.
+
+---
+
+# 📈 Additional Chart Gallery
+
+Supporting analytical charts generated during Python EDA and SQL analysis are stored in:
+
+```text
+08_screenshots/chart_images/
+```
+
+Example:
+
+![Analytical Chart](08_screenshots/chart_images/example_chart.png)
+
+These visualizations provide additional detail behind the insights presented in the dashboard.
+
+---
+
+# 📐 Power BI Analytical Layer
+
+The Power BI reporting layer is designed around reusable business measures rather than relying only on static visuals.
+
+### Analytical Concepts
+
+* KPI development
+* Aggregated measures
+* Percentage contribution
+* Ranking
+* Time-based analysis
+* Running totals
+* Comparative analysis
+* Interactive filtering
+* Cross-table analysis
+* Business-focused storytelling
+
+---
+
+# 💼 Key Business Insights
+
+The project is designed to answer questions from both operational and management perspectives.
+
+### Customer Perspective
+
+Identify high-value customers, understand customer types, and evaluate how customer relationships translate into account activity and balances.
+
+### Account Perspective
+
+Understand which account types and statuses dominate the portfolio and how balances are distributed across the customer base.
+
+### Transaction Perspective
+
+Monitor transaction activity, transaction values, transaction types, account-to-account movement, and branch-level transaction performance.
+
+### Loan Perspective
+
+Evaluate the scale and composition of the loan portfolio, including principal amounts, loan statuses, interest rates, and associated accounts.
+
+### Branch Perspective
+
+Compare branch-level activity across customers, transactions, loans, and other relevant metrics to identify stronger and weaker performers.
+
+### Cross-Functional Perspective
+
+Connect multiple business domains to discover insights that are not visible when customers, accounts, transactions, loans, and branches are analyzed separately.
+
+---
+
+# 🔄 End-to-End Data Analytics Workflow
+
+```text
+Raw CSV Files
+      │
+      ▼
+Business Understanding
+      │
+      ▼
+Data Understanding
+      │
+      ▼
+Data Cleaning
+      │
+      ▼
+Cleaned Datasets
+      │
+      ▼
+MySQL Relational Database
+      │
+      ▼
+SQL Business Analysis
+      │
+      ├──────────────► Executive KPIs
+      ├──────────────► Customer Analytics
+      ├──────────────► Account Analytics
+      ├──────────────► Transaction Analytics
+      ├──────────────► Loan Analytics
+      ├──────────────► Branch Analytics
+      └──────────────► Cross-Functional Analytics
+      │
+      ▼
+Python EDA
+      │
+      ▼
+Power BI
+      │
+      ▼
+Interactive Dashboard
+      │
+      ▼
+Business Insights
+```
+
+---
+
+# 🛠️ Technology Stack
+
+| Technology           | Purpose                                     |
+| -------------------- | ------------------------------------------- |
+| **MySQL**            | Relational database design and SQL analysis |
+| **SQL**              | Business analysis and advanced querying     |
+| **Python**           | Data cleaning, EDA, and visualization       |
+| **Pandas**           | Data manipulation and analysis              |
+| **NumPy**            | Numerical analysis                          |
+| **Matplotlib**       | Exploratory visualization                   |
+| **Jupyter Notebook** | Python analysis environment                 |
+| **Power BI**         | Interactive business intelligence dashboard |
+| **DAX**              | Analytical measures                         |
+| **Git/GitHub**       | Version control and portfolio presentation  |
+
+---
+
+# ⭐ Why This Project Matters
+
+This project demonstrates the ability to work across the **complete data analytics lifecycle**, rather than focusing on a single tool.
+
+It covers:
+
+```text
+Business Thinking
+       +
+Data Preparation
+       +
+Database Engineering
+       +
+Advanced SQL
+       +
+Python Analytics
+       +
+BI Development
+       +
+Data Storytelling
+```
+
+This makes the project representative of a realistic **Data Analyst workflow** where raw operational data must be transformed into business-ready information.
+
+---
+
+# 🚀 Project Highlights
+
+* Built a relational banking analytics database containing **11 connected tables**.
+* Designed and implemented **primary-key and foreign-key relationships** across core banking entities.
+* Created a structured analytics workflow spanning **8 project phases**.
+* Developed **7 business-focused SQL analysis modules**.
+* Applied advanced SQL concepts such as **CTEs, subqueries, joins, aggregations, ranking, window functions, and time-based analysis**.
+* Performed exploratory data analysis using **Python, Pandas, NumPy, and Matplotlib**.
+* Developed an interactive **Power BI dashboard** for banking performance analysis.
+* Combined customer, account, transaction, loan, and branch data for **cross-functional analysis**.
+* Documented the complete project lifecycle for reproducibility and portfolio presentation.
+
+---
+
+# 📁 Repository Guide
+
+| Folder                       | Purpose                                     |
+| ---------------------------- | ------------------------------------------- |
+| `00_Data/`                   | Raw and cleaned source data                 |
+| `01_Business_Understanding/` | Business objectives and requirements        |
+| `02_Data_Understanding/`     | Dataset understanding and ER diagram        |
+| `03_Data_Cleaning/`          | Data-cleaning notebook and report           |
+| `04_Database_Design/`        | Database schema and ER diagram              |
+| `05_SQL_Business_Analysis/`  | SQL business analysis                       |
+| `06_Notebook/`               | Python EDA and SQL output analysis          |
+| `07_PowerBI/`                | Power BI dashboard                          |
+| `08_screenshots/`            | Dashboard screenshots and analytical charts |
+
+---
+
+# 📄 Resume Version
+
+## Enterprise Banking Analytics | MySQL • Python • Power BI
+
+Developed an end-to-end banking analytics solution using **MySQL, Python, and Power BI** across an **11-table relational database** covering customers, accounts, transactions, loans, branches, and supporting master data. Built **7 business-focused SQL analysis modules** using joins, CTEs, subqueries, aggregations, window functions, and time-based analysis; performed Python-based EDA and developed an interactive Power BI dashboard for executive KPIs, customer, account, transaction, loan, and branch analytics.
+
+---
+
+# 💼 Resume Bullet Points
+
+* Designed an **11-table relational banking database in MySQL**, establishing PK/FK relationships across customers, accounts, transactions, loans, branches, and supporting master tables.
+* Developed **7 business-focused SQL analysis modules** covering executive KPIs, customer, account, transaction, loan, branch, and cross-functional analytics.
+* Applied advanced SQL techniques including **CTEs, subqueries, joins, window functions, ranking, running totals, and time-based analysis** to solve banking business problems.
+* Performed exploratory data analysis using **Python, Pandas, NumPy, and Matplotlib** to identify trends and validate analytical outputs.
+* Built an interactive **Power BI dashboard** to analyze banking KPIs, customer activity, account balances, transaction trends, loan portfolio, and branch performance.
+* Structured the project across **business understanding, data understanding, cleaning, database design, SQL analysis, EDA, and BI reporting**, demonstrating an end-to-end analytics workflow.
+
+---
+
+# 🧠 Skills Demonstrated
+
+### SQL & Database
+
+```text
+MySQL
+SQL
+Joins
+CTEs
+Subqueries
+Correlated Subqueries
+Window Functions
+Aggregations
+Ranking
+Running Totals
+Time-Series Analysis
+Relational Database Design
+Primary Keys
+Foreign Keys
+```
+
+### Python
+
+```text
+Python
+Pandas
+NumPy
+Matplotlib
+Data Cleaning
 Exploratory Data Analysis
-Business-oriented insight generation
-Interactive dashboard design in Power BI
-Structured documentation & project organization
+Data Visualization
+```
 
-## 👤 Author
+### Power BI
 
-**codebyavneesh**
+```text
+Power BI
+DAX
+Data Modeling
+KPI Development
+Interactive Dashboards
+Business Reporting
+Data Storytelling
+```
 
-- GitHub: [github.com/codebyavneesh](https://github.com/codebyavneesh)
-- LinkedIn: [linkedin.com/in/codebyavneesh](https://linkedin.com/in/codebyavneesh)
-- Fiverr: [fiverr.com/codebyavneesh](https://www.fiverr.com/codebyavneesh) 
+---
 
-⭐ If you found this project useful, please give it a star!
-Feel free to fork, explore, or use it as a reference for your own banking/finance analytics projects.
-text
-jupyter notebook
+# 🏁 Final Outcome
+
+The final solution transforms raw banking datasets into a structured analytical platform:
+
+> **Raw Data → Clean Data → Relational Database → SQL Analysis → Python EDA → Power BI → Business Insights**
+
+The project demonstrates the practical application of **SQL, Python, database design, data visualization, and business intelligence** to a realistic banking analytics scenario.
+
+---
+
+## 🔗 Connect With Me
+
+* 💼 **LinkedIn:** [linkedin.com/in/codebyavneesh](https://linkedin.com/in/codebyavneesh)
+* 🧑‍💻 **Fiverr:** [fiverr.com/sellers/codebyavneesh](https://www.fiverr.com/sellers/codebyavneesh/edit)
+
+
+# 👨‍💻 Author
+
+## Avneesh Yadav
+
+**Aspiring Data Analyst**
+
+**SQL | Python | Pandas | NumPy | Power BI | DAX | Excel**
+
+---
+
+### 📬 Portfolio Note
+
+This project is built as a complete data analytics case study, with the source data, cleaning process, database schema, SQL analysis, notebooks, Power BI dashboard, and supporting visualizations organized in separate stages for easy exploration.
