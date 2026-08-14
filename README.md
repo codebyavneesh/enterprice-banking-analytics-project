@@ -1,8 +1,28 @@
 # 🏦 Enterprise Banking Analytics Project
 
-**End-to-End Banking Analytics System** — Raw banking data se clean database, advanced SQL analytics, Python EDA aur interactive Power BI dashboard tak ka complete analytics lifecycle.
+**End-to-End Banking Analytics System** — from raw multi-table banking data to a cleaned relational database, advanced SQL analysis, Python EDA, and an interactive Power BI dashboard.
+
+![Python](https://img.shields.io/badge/Python-3.x-blue)
+![MySQL](https://img.shields.io/badge/MySQL-Database-orange)
+![Power BI](https://img.shields.io/badge/Power%20BI-Dashboard-yellow)
+![Status](https://img.shields.io/badge/Status-Completed-brightgreen)
 
 **Tools:** Python • MySQL • Power BI • SQL • Pandas • Matplotlib • Seaborn
+
+---
+
+## 📑 Table of Contents
+
+- [Dashboard Preview](#-power-bi-dashboard-preview)
+- [Project Overview](#-project-overview)
+- [Tech Stack](#️-tech-stack)
+- [Project Structure](#-project-structure)
+- [Dataset](#-dataset)
+- [Analysis Performed](#-analysis-performed)
+- [Key Business Questions Answered](#-key-business-questions-answered)
+- [How to Run](#️-how-to-run--explore)
+- [Skills Demonstrated](#-skills-demonstrated)
+- [Author](#-author)
 
 ---
 
@@ -10,62 +30,57 @@
 
 > Click on any image to open the full-size screenshot
 
-[![Dashboard 1](enterprice-banking-analytics-project/08_screenshots/dashboard_images/dashboard_image1.png)](enterprice-banking-analytics-project/08_screenshots/dashboard_images/dashboard_image1.png)
-
-[![Dashboard 2](enterprice-banking-analytics-project/08_screenshots/dashboard_images/dashboard_image2.png)](enterprice-banking-analytics-project/08_screenshots/dashboard_images/dashboard_image2.png)
-
-[![Dashboard 3](enterprice-banking-analytics-project/08_screenshots/dashboard_images/dashboard_image3.png)](enterprice-banking-analytics-project/08_screenshots/dashboard_images/dashboard_image3.png)
-
-[![Dashboard 4](enterprice-banking-analytics-project/08_screenshots/dashboard_images/dashboard_image4.png)](enterprice-banking-analytics-project/08_screenshots/dashboard_images/dashboard_image4.png)
-
-[![Dashboard 5](enterprice-banking-analytics-project/08_screenshots/dashboard_images/dashboard_image5.png)](enterprice-banking-analytics-project/08_screenshots/dashboard_images/dashboard_image5.png)
+| | |
+|---|---|
+| [![Dashboard 1](enterprice-banking-analytics-project/08_screenshots/dashboard_images/dashboard_image1.png)](enterprice-banking-analytics-project/08_screenshots/dashboard_images/dashboard_image1.png) | [![Dashboard 2](enterprice-banking-analytics-project/08_screenshots/dashboard_images/dashboard_image2.png)](enterprice-banking-analytics-project/08_screenshots/dashboard_images/dashboard_image2.png) |
+| [![Dashboard 3](enterprice-banking-analytics-project/08_screenshots/dashboard_images/dashboard_image3.png)](enterprice-banking-analytics-project/08_screenshots/dashboard_images/dashboard_image3.png) | [![Dashboard 4](enterprice-banking-analytics-project/08_screenshots/dashboard_images/dashboard_image4.png)](enterprice-banking-analytics-project/08_screenshots/dashboard_images/dashboard_image4.png) |
+| [![Dashboard 5](enterprice-banking-analytics-project/08_screenshots/dashboard_images/dashboard_image5.png)](enterprice-banking-analytics-project/08_screenshots/dashboard_images/dashboard_image5.png) | |
 
 ---
 
 ## 📌 Project Overview
 
-Banks generate massive volumes of data daily through customer onboarding, account management, transactions, loans, and branch operations. Raw operational data alone is not enough for strategic decisions.
+Banks generate massive volumes of data daily through customer onboarding, account management, transactions, loans, and branch operations. Raw operational data alone is not enough for strategic decisions — it needs to be cleaned, modeled, and turned into insight.
 
 This project transforms multi-table relational banking data into **actionable business insights** using a complete analytics pipeline:
 
-- Business Understanding  
-- Data Understanding & ER Modeling  
-- Data Cleaning (Python)  
-- Relational Database Design (MySQL)  
-- Advanced SQL Business Analysis  
-- Exploratory Data Analysis (Python)  
-- Interactive Power BI Dashboard  
+1. Business Understanding
+2. Data Understanding & ER Modeling
+3. Data Cleaning (Python)
+4. Relational Database Design (MySQL)
+5. Advanced SQL Business Analysis
+6. Exploratory Data Analysis (Python)
+7. Interactive Power BI Dashboard
 
 **Key Focus Areas:**
-- Customer Analytics  
-- Account Performance  
-- Transaction Trends  
-- Loan Portfolio Health  
-- Branch Performance  
+- Customer Analytics
+- Account Performance
+- Transaction Trends
+- Loan Portfolio Health
+- Branch Performance
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Category              | Tools / Technologies                          |
-|-----------------------|-----------------------------------------------|
-| **Data Cleaning & EDA** | Python, Pandas, NumPy, Matplotlib, Seaborn   |
-| **Database**          | MySQL                                         |
-| **SQL Analytics**     | Advanced SQL (CTEs, Window Functions, Joins)  |
-| **Visualization**     | Power BI                                      |
-| **Version Control**   | Git & GitHub                                  |
+| Category | Tools / Technologies |
+|---|---|
+| **Data Cleaning & EDA** | Python, Pandas, NumPy, Matplotlib, Seaborn |
+| **Database** | MySQL |
+| **SQL Analytics** | Advanced SQL (CTEs, Window Functions, Joins) |
+| **Visualization** | Power BI (DAX measures) |
+| **Version Control** | Git & GitHub |
 
 ---
 
 ## 📁 Project Structure
+
+```
 enterprise-banking-analytics-project/
 │
 ├── 00_Data/
-│   ├── raw/
-│   │   └── Original raw CSV files
-│   │
-│   └── cleaned/
-│       └── Cleaned datasets ready for database loading
+│   ├── raw/                          # Original raw CSV files
+│   └── cleaned/                      # Cleaned datasets ready for DB loading
 │
 ├── 01_Business_Understanding/
 │   └── Business_Understanding.md
@@ -99,28 +114,26 @@ enterprise-banking-analytics-project/
 │   └── dashboard.pbix
 │
 ├── 08_screenshots/
-│   ├── dashboard_images/
-│   │   └── Power BI dashboard screenshots
-│   │
-│   └── chart_images/
-│       └── Additional analytical charts
+│   ├── dashboard_images/             # Power BI dashboard screenshots
+│   └── chart_images/                 # Additional analytical charts
 │
 └── README.md
+```
 
 ---
 
 ## 📂 Dataset
 
-Multi-table relational banking dataset covering:
+Multi-table relational banking dataset (sourced from Kaggle) covering:
 
-- Customers & Customer Types  
-- Accounts & Account Types / Statuses  
-- Transactions & Transaction Types  
-- Loans & Loan Statuses  
-- Branches  
-- Addresses  
+- Customers & Customer Types
+- Accounts & Account Types / Statuses
+- Transactions & Transaction Types
+- Loans & Loan Statuses
+- Branches
+- Addresses
 
-**Cleaned files** are ready for MySQL import and Power BI.
+Cleaned files are ready for MySQL import and Power BI.
 
 ---
 
@@ -142,8 +155,8 @@ Multi-table relational banking dataset covering:
 ### 3. SQL Business Analysis (7 Modules)
 
 | Module | Focus |
-|--------|-------|
-| **01_Executive_KPIs** | Total Customers, Accounts, Transactions, Loan Portfolio, Avg Balance |
+|---|---|
+| **01_Executive_KPIs** | Total customers, accounts, transactions, loan portfolio, average balance |
 | **02_Customer_Analytics** | Customer segments, high-value customers, growth trends |
 | **03_Account_Analytics** | Account type popularity, balance distribution, status analysis |
 | **04_Transaction_Analytics** | Volume trends, transaction types, monthly patterns |
@@ -158,7 +171,7 @@ Multi-table relational banking dataset covering:
 
 ### 5. Power BI Dashboard
 Interactive multi-page dashboard with:
-- Executive KPI cards
+- Executive KPI cards (built with custom DAX measures)
 - Customer & Account insights
 - Transaction trends
 - Loan portfolio overview
@@ -184,64 +197,65 @@ Interactive multi-page dashboard with:
 
 ### 1. Database Setup
 
-Run `schema_design.sql` in **MySQL Workbench**.
+Run `schema_design.sql` in **MySQL Workbench** to create the database and tables, then load the cleaned CSV files into the respective tables.
 
-```sql
--- Create the database and tables
--- Then load the cleaned CSV files into the respective tables
+### 2. SQL Business Analysis
 
-2. SQL Business Analysis
+Open any SQL file from `05_SQL_Business_Analysis/` and execute the queries in MySQL Workbench after loading the database. The folder contains analysis for:
 
-Open any SQL file from:
-05_SQL_Business_Analysis/
-Execute the queries in MySQL Workbench after loading the database.
+- Executive KPIs
+- Customer Analytics
+- Account Analytics
+- Transaction Analytics
+- Loan Analytics
+- Branch Analytics
+- Cross-Functional Analytics
 
-The folder contains analysis for:
+### 3. Python Notebooks
 
-Executive KPIs
-Customer Analytics
-Account Analytics
-Transaction Analytics
-Loan Analytics
-Branch Analytics
-Cross-Functional Analytics
+Install the required libraries:
 
-3. Python Notebooks
-
-Install the required Python libraries:
+```bash
 pip install pandas numpy matplotlib seaborn
+```
+
 Launch Jupyter Notebook:
+
+```bash
 jupyter notebook
-Then open either:
-06_Notebook/EDA.ipynb
-Or
-06_Notebook/sql_analysis_outputs.ipynb
+```
 
-4. Power BI Dashboard
+Then open either `06_Notebook/EDA.ipynb` or `06_Notebook/sql_analysis_outputs.ipynb`.
 
-Open the Power BI file in Power BI Desktop:
+### 4. Power BI Dashboard
+
+Open the dashboard in Power BI Desktop:
+
+```
 07_PowerBI/dashboard.pbix
-You can also explore the dashboard screenshots without opening Power BI:
-08_screenshots/dashboard_images/
+```
 
-🎯 Skills Demonstrated
-End-to-end analytics project ownership
-Relational database design & MySQL
-Advanced SQL analysis
-CTEs and multi-table joins
-Aggregations and window functions
-Data cleaning & preprocessing with Python
-Exploratory Data Analysis (EDA)
-Business-oriented insight generation
-Interactive dashboard development in Power BI
-DAX-based analytical reporting
-Data visualization and storytelling
-Structured documentation and project organization
+You can also explore the dashboard without opening Power BI by browsing the screenshots in `08_screenshots/dashboard_images/`.
 
-👤 Author
+---
 
-codebyavneesh
+## 🎯 Skills Demonstrated
 
-🔗 Connect With Me
-💼 LinkedIn: linkedin.com/in/codebyavneesh
-🧑‍💻 Fiverr: fiverr.com/sellers/codebyavneesh
+- End-to-end analytics project ownership
+- Relational database design & MySQL
+- Advanced SQL analysis — CTEs, multi-table joins, aggregations, window functions
+- Data cleaning & preprocessing with Python
+- Exploratory Data Analysis (EDA)
+- Business-oriented insight generation
+- Interactive dashboard development in Power BI
+- DAX-based analytical reporting
+- Data visualization and storytelling
+- Structured documentation and project organization
+
+---
+
+## 👤 Author
+
+**codebyavneesh**
+
+🔗 [LinkedIn](https://linkedin.com/in/codebyavneesh) · 💼 [Fiverr](https://fiverr.com/sellers/codebyavneesh)
