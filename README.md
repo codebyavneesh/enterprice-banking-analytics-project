@@ -32,7 +32,7 @@
 
 | | |
 |---|---|
-| [Dashboard 1](https://github.com/codebyavneesh/enterprice-banking-analytics-project/blob/main/enterprice-banking-analytics-project/08_screenshots/dashboard_image/Screenshot%202026-08-30%20101036.png) | [Dashboard 2](https://github.com/codebyavneesh/enterprice-banking-analytics-project/blob/main/enterprice-banking-analytics-project/08_screenshots/dashboard_image/Screenshot%202026-08-30%20101154.png)|
+| [|[Dashboard 1](https://github.com/codebyavneesh/enterprice-banking-analytics-project/blob/main/enterprice-banking-analytics-project/08_screenshots/dashboard_image/Screenshot%202026-08-30%20101036.png) | [Dashboard 2](https://github.com/codebyavneesh/enterprice-banking-analytics-project/blob/main/enterprice-banking-analytics-project/08_screenshots/dashboard_image/Screenshot%202026-08-30%20101154.png)|
 | [Dashboard 3](https://github.com/codebyavneesh/enterprice-banking-analytics-project/blob/main/enterprice-banking-analytics-project/08_screenshots/dashboard_image/Screenshot%202026-08-30%20101233.png) | [Dashboard 4](https://github.com/codebyavneesh/enterprice-banking-analytics-project/blob/main/enterprice-banking-analytics-project/08_screenshots/dashboard_image/Screenshot%202026-08-30%20101509.png) |
 | [Dashboard 5](https://github.com/codebyavneesh/enterprice-banking-analytics-project/blob/main/enterprice-banking-analytics-project/08_screenshots/dashboard_image/Screenshot%202026-08-30%20101612.png) | |
 
